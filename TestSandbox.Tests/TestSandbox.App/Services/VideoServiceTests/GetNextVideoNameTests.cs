@@ -8,11 +8,17 @@ namespace TestSandbox.Tests.TestSandbox.App.Services.VideoServiceTests
 {
     public class GetNextVideoNameTests : BaseVideoServiceTests
     {
-        private VideoService _videoService;
-
-        public GetNextVideoNameTests()
+        [Fact]
+        public void GetNextVideoName_Default_DoesntReturnNull()
         {
-            _videoService = new VideoService();
+            Assert.NotNull(_videoService.GetNextVideoName());
+        }
+
+        [Fact]
+        public void GetNextVideoName_Default_DoesntReturnEmptyString()
+        {
+            string name = _videoService.GetNextVideoName();
+            Assert.False(string.IsNullOrEmpty(name));
         }
     }
 }

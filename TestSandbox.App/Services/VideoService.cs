@@ -7,6 +7,9 @@ namespace TestSandbox.App.Services
 {
     public interface IVideoService
     {
+        string GetNextVideoName();
+        void ClearQueue();
+        void AddToQueue(Video video);
     }
 
     public class VideoService : IVideoService
@@ -15,6 +18,21 @@ namespace TestSandbox.App.Services
         public VideoService()
         {
             Videos = new Queue<Video>();
+        }
+
+        public string GetNextVideoName()
+        {
+            return "test video";
+        }
+
+        public void ClearQueue()
+        {
+            Videos.Clear();
+        }
+
+        public void AddToQueue(Video video)
+        {
+            Videos.Enqueue(video);
         }
     }
 }
