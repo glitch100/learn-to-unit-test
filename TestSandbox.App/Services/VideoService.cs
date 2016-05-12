@@ -22,7 +22,11 @@ namespace TestSandbox.App.Services
 
         public string GetNextVideoName()
         {
-            return "test video";
+            if (!Videos.Any())
+            {
+                throw new Exception("No Videos in the Queue");
+            }
+            return Videos.Peek().Name;
         }
 
         public void ClearQueue()
