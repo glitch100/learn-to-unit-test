@@ -10,6 +10,7 @@ namespace TestSandbox.App.Services
         string GetNextVideoName();
         void ClearQueue();
         void AddToQueue(Video video);
+        IEnumerable<Video> GetVideos(int amount = 1);
     }
 
     public class VideoService : IVideoService
@@ -37,6 +38,11 @@ namespace TestSandbox.App.Services
         public void AddToQueue(Video video)
         {
             Videos.Enqueue(video);
+        }
+
+        public IEnumerable<Video> GetVideos(int amount = 1)
+        {
+            return new[] { new Video(null) };
         }
     }
 }
